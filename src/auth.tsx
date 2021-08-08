@@ -43,19 +43,16 @@ const Auth: FC<{ setIsAuth: Dispatch<React.SetStateAction<boolean>> }> = ({
           });
       }
     },
-    [form]
+    [forType, form, setIsAuth]
   );
 
   const handleChange = useCallback((event) => {
     setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
-  }, []);
+  }, [setForm]);
 
   return (
     <div className="container">
       <div
-        style={{
-          transform: `translate(${forType === "login" ? 0 : 250}px, 0px)`
-        }}
         className="form-div"
       >
         <form onSubmit={onSubmit}>
@@ -102,9 +99,7 @@ const Auth: FC<{ setIsAuth: Dispatch<React.SetStateAction<boolean>> }> = ({
         </form>
       </div>
       <div
-        style={{
-          transform: `translate(${forType === "login" ? 0 : -250}px, 0px)`
-        }}
+      
         className="button-div"
       >
         <p>

@@ -5,11 +5,11 @@ export const validatePassword = (
   input: Input,
   setErrors: Dispatch<React.SetStateAction<Partial<Input> | undefined>>,
   formType: FormType
-) => {
+): boolean => {
   const letter = /[a-zA-Z]/;
   const number = /[0-9]/;
   let isValid = true;
-  let errors = {
+  const errors = {
     name: "",
     email: "",
     password: "",
@@ -27,7 +27,7 @@ export const validatePassword = (
   }
 
   if (typeof input["email"] !== "undefined") {
-    var pattern = new RegExp(
+    const pattern = new RegExp(
       /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
     );
     if (!pattern.test(input["email"])) {
